@@ -20,7 +20,7 @@ long previousTime = 0;
 void setup() {
   Serial.begin(9600); 
   pinMode(sensorPin, INPUT);
-  Serial.println("Started");
+ // Serial.println("Started");
   beginTime = micros();
 }
 
@@ -45,7 +45,7 @@ void loop() {
         averageRPM = lineCount/(millis()/60000);
         Serial.println(averageRPM);
         */
-        //Serial.print("1\n");
+        
         if(detection == true){
           rpm = 60000000/(micros()-previousTime);
           Serial.println(rpm);
