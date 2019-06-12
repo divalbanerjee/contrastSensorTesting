@@ -33,7 +33,8 @@ void setup()
   f = createFont("Helvetica",100,true);
   frameRate(240);
   //table.addColumn("RPM");
-  myTable.addColumn("Index",Table.INT);
+  myTable = new Table();
+  //myTable.addColumn("Index",Table.INT);
   myTable.addColumn("RPM",Table.STRING);  //FIXME: RPM only reads integers
   
   smooth(8);
@@ -43,13 +44,11 @@ void draw()
 {
   background(20,30,40);
   if ( myPort.available() > 0) {  // If data is available,
-      rpm = (myPort.readStringUntil('\n')); 
-      //table.addRow().setString("RPM", rpm);
-      //saveTable(table, "data/new.csv");
-      count++;
+      rpm = (myPort.readStringUntil(10)); 
       myTable.addRow();
-      myTable.setInt((myTable.getRowCount()-1),"Index",count);
+      //myTable.setInt((myTable.getRowCount()-1),"Index",count);
       myTable.setString((myTable.getRowCount()-1),"RPM",rpm);
+      saveTable(myTable, "data.csv");
   }
       textFont(f);
       textSize(100);
