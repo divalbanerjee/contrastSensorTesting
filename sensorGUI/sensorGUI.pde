@@ -44,9 +44,8 @@ void draw()
 {
   background(20,30,40);
   if ( myPort.available() > 0) {  // If data is available,
-      rpm = (myPort.readStringUntil(10)); 
+      rpm = (myPort.readStringUntil(59)); 
       myTable.addRow();
-      //myTable.setInt((myTable.getRowCount()-1),"Index",count);
       myTable.setString((myTable.getRowCount()-1),"RPM",rpm);
       saveTable(myTable, "data.csv");
   }

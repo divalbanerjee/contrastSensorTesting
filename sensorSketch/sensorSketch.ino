@@ -37,18 +37,10 @@ void loop() {
     if (reading != buttonState) {
       buttonState = reading;
       if (buttonState == HIGH) {
-        lineCount++; 
-        /*
-        Serial.println("Line count:");
-        Serial.println(lineCount);
-        Serial.println("averageRPM:");
-        averageRPM = lineCount/(millis()/60000);
-        Serial.println(averageRPM);
-        */
-        
+        lineCount++;      
         if(detection == true){
           rpm = 60000000/(micros()-previousTime);
-          Serial.println(rpm);
+          Serial.print(rpm + ";");
         }else{
           rpm = 0;
         }
@@ -56,7 +48,6 @@ void loop() {
         previousTime = micros();
       }
     }
-  }
-  
+  }  
   lastButtonState = reading;
 }
