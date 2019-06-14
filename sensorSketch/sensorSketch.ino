@@ -40,7 +40,7 @@ void loop() {
         lineCount++;      
         if(detection == true){
           rpm = 60000000/(micros()-previousTime);
-          Serial.print(rpm + ";");
+          Serial.print(String(rpm) + ";");
         }else{
           rpm = 0;
         }
